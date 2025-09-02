@@ -8,10 +8,10 @@ frontend:
       commands:
         # Install Go
         - wget --no-verbose https://go.dev/dl/go1.24.3.linux-amd64.tar.gz
-        - rm -rf /usr/local/go 
-        - tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz
+        - sudo rm -rf /usr/local/go 
+        - sudo tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz
         # Install Hugo extended version
-        - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
+        - wget --no-verbose https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
         - tar -xf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz hugo
         - mv hugo /usr/bin/hugo
         - rm -rf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
