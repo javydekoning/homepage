@@ -7,7 +7,9 @@ frontend:
     preBuild:
       commands:
         # Install Go
-        - sudo yum install -y golang
+        - wget --no-verbose https://go.dev/dl/go1.24.3.linux-amd64.tar.gz
+        - rm -rf /usr/local/go 
+        - tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz
         # Install Hugo extended version
         - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
         - tar -xf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz hugo
@@ -21,6 +23,8 @@ frontend:
     build:
       commands:
         # Build the Hugo site
+        - export PATH=$PATH:/usr/local/go/bin
+        - go version
         - hugo --minify
   artifacts:
     baseDirectory: public
