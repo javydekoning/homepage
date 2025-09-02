@@ -18,6 +18,7 @@ frontend:
         # Verify Hugo installation
         - hugo version
         # Initialize Hugo modules
+        - export PATH=$PATH:/usr/local/go/bin
         - hugo mod get
         - hugo mod tidy
     build:
